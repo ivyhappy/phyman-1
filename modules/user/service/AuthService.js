@@ -11,7 +11,11 @@ angular.module('phyman.user')
     var user = {};
     var onIdentity = function(response) {
         //Do something at backend on identity secceed.
-    };
+    	user=response;
+    }
+    var getjson= function(){
+    	return user;
+    }
      var onIdFail = function(error) {
         //Do something at backend on identity failed.
     };
@@ -37,11 +41,15 @@ angular.module('phyman.user')
         },
         login: function(user) {
             var deferred = $q.defer();
-            $http.post('/login', {
+            $http.post('/PHYMAN/index.php/Home/Index/login', {
                 username: user.username,
                 password: user.password
             })
             .then(function(response) {
+            	/*console.log("loginsuc");
+            	console.log(response.data.username);*/
+            	$rootScope.username=response.data.username;
+                $rootScope.access_token=response.data.access_token;
                 onIdentity(response);
                 deferred.resolve(response);
             }, function(error) {
@@ -83,5 +91,6 @@ angular.module('phyman.user')
             }
             return false;
         }
+        
     };
 }]);
