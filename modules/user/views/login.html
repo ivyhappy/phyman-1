@@ -4,7 +4,7 @@
       <span class="md-title">Login</span>
       <span flex></span>
       <md-button class="md-icon-button" ng-click="cancel()" aria-label="Cancel">
-         <md-icon md-svg-src="./Background/Home/phyman-1/assets/images/ic_close_48px.svg"></md-icon>
+         <md-icon md-svg-src="assets/images/ic_close_48px.svg"></md-icon>
       </md-button>
    </md-toolbar>
    <md-progress-linear md-mode="indeterminate" ng-show="isLoggingIn"></md-progress-linear>
@@ -18,7 +18,7 @@
       </md-input-container>
       <md-input-container>
          <label>Password:</label>
-         <input name="password" type="password" ng-disabled="isLoggingIn" ng-model="user.password" ng-pattern="/^\w{3,16}$/" required>
+         <input name="password" type="password" ng-disabled="isLoggingIn" ng-model="user.password" ng-pattern="/^\w{8,16}$/" required>
          <div ng-messages="loginForm.password.$error" ng-show="loginForm.password.$dirty">
             <div ng-message="pattern"> Password should be between 8 to 16 characters.</div>
          </div>
